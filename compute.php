@@ -4,18 +4,14 @@ if (isset($_POST["processes"])){
   } else {
     header('Location: '."index.php");
 }
-$arrival_time = array();
-$burst_time = array();
-$priority = array();
 
+$processes = array();
 $quantum = $_POST["quantum"];
-$processes = $_POST["processes"];
-for ($i = 0; $i < $processes ; $i++){
-  $arrival_time[$i] = $_POST["arrival_time_".$i];
-  echo $arrival_time[$i];
-  $burst_time[$i] = $_POST["burst_time_".$i];
-  $priority[$i] = $_POST["priority_".$i];
+$processes_num = $_POST["processes"];
+for ($i = 0; $i < $processes_num ; $i++){
+  $processes = array("P".$i,$_POST["arrival_time_".$i],$_POST["burst_time_".$i],$_POST["priority_".$i]);
 }
+var_dump($processes);
 $technique_no = $_POST["technique"];
 $technique;
   switch($technique_no){
